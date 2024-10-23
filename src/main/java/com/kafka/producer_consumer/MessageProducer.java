@@ -10,8 +10,8 @@ public class MessageProducer {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public void send(String message) {
-        kafkaTemplate.send("match-score", message);
+    public void send(MessageRequest messageRequest) {
+        kafkaTemplate.send("match-score", messageRequest.key, messageRequest.data);
     }
 
 }

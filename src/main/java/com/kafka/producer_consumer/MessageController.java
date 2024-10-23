@@ -1,8 +1,6 @@
 package com.kafka.producer_consumer;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/message")
@@ -15,7 +13,7 @@ public class MessageController {
     }
 
     @GetMapping
-    public void message() {
-        messageProducer.send("56-33");
+    public void message(@RequestBody MessageRequest messageRequest) {
+        messageProducer.send(messageRequest);
     }
 }

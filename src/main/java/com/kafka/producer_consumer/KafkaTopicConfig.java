@@ -10,7 +10,7 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic topic1() {
-        return TopicBuilder.name("match-score").partitions(1).build();
+        return TopicBuilder.name("match-score").partitions(2).build();
 
     }
 }
