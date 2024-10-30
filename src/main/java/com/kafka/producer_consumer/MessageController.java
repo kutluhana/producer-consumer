@@ -2,6 +2,9 @@ package com.kafka.producer_consumer;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 @RestController
 @RequestMapping("/message")
 public class MessageController {
@@ -13,7 +16,7 @@ public class MessageController {
     }
 
     @GetMapping
-    public void message(@RequestBody MessageRequest messageRequest) {
-        messageProducer.send(messageRequest);
+    public void message(@RequestBody List<MessageRequest> messageRequest) {
+        Stream.of(messageRequest).forEach(messageProducer::send);
     }
 }
